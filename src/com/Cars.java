@@ -6,6 +6,9 @@ public class Cars {
 				
 	}
 	
+	public Cars(String model,int price,Shops shops_id){
+	}
+		
 	private int id;
 	private String model;
 	private int price;

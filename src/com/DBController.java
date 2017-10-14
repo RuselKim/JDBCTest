@@ -53,12 +53,50 @@ public class DBController {
 	}
 	
 	public void insertCars (Cars car){
-		String query = "Insert into cars (model,price,"
+		String query = "Insert into cars (model,price,shops_id)values(?,?,?)";
 		Connection connection = con.getConnection();
-		PreparedStatement pstmt = connection.prepareStatement();
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(query);
+			pstmt.setString(1,car.getModel());
+			pstmt.setInt(2,car.getPrice());
+			pstmt.setInt(3,car.getShopID().getId());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("bad query");
+		}
 		
 		
 	}
 	
+	public void insertShops (Shops shop){
+		String query = "Insert into shops (name,adress)values(?,?)";
+		Connection connection = con.getConnection();
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(query);
+			pstmt.setString(1,shop.getName());
+			pstmt.setString(2,shop.getAdress());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("bad query");
+		}
+		
+		
+	}
+	
+	public void updateCars(Cars car){
+		
+	}
+	
+	public void updateShops(Shops shop){
+		
+	}
+	
+	public void deleteCars(Cars car){
+		
+	}
+	
+	public void deleteShops(Shops shop){
+		
+	}
 	
 }

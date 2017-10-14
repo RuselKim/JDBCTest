@@ -1,6 +1,14 @@
 package com;
 
 public class Shops {
+	
+public Shops(int id, String name,String adress){
+	
+}
+public Shops(String name,String adress){
+	
+}
+
 	private int id;
 	private String name;
 	private String adress;
