@@ -2,6 +2,9 @@ package com;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DBController {
 	private Conector con = Conector.getInstance();
@@ -17,11 +20,15 @@ public class DBController {
 			result = selectCars.executeQuery(query);
 	
 			while (result.next()){
+				
 				int id = result.getInt("id");
 				String model = result.getString("model");
 				int price = result.getInt("price");
-				System.out.println(id + "  " + model+"   "+price);
+				int shop_id = result.getInt("shops_id");
+				Shops shop =(Shops) selectShops().get(shop_id);
+				carsList.add(new Cars(id,model,price,shop));
 			}
+			
 		} catch (SQLException e) {
 			System.out.println("Bad query");
 		}
@@ -29,22 +36,23 @@ public class DBController {
 		return carsList;
 	}
 	
-	public ArrayList selectShops(){
-		ArrayList shopsList = new ArrayList();
+	public Map<Integer, Shops> selectShops(){
+		Map <Integer,Shops> shopsList = new HashMap<Integer,Shops>();
 		Connection connection = con.getConnection();
 		Statement selectShops;
 		try {
 			selectShops = connection.createStatement();
 			String query = "Select * from shops;";
-			ResultSet result;
-			result = selectShops.executeQuery(query);
+			ResultSet result = selectShops.executeQuery(query);
 	
 			while (result.next()){
 				int id = result.getInt("id");
 				String name = result.getString("name");
-				int adress = result.getInt("adress");
-				System.out.println(id + "  " + name+"   "+adress);
+				String adress = result.getString("adress");
+				Shops shop = new Shops(id,name,adress);
+				shopsList.put(id, shop);
 			}
+			selectShops.close();
 		} catch (SQLException e) {
 			System.out.println("Bad query");
 		}
@@ -58,8 +66,11 @@ public class DBController {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(query);
 			pstmt.setString(1,car.getModel());
+			System.out.println(car.getModel());
 			pstmt.setInt(2,car.getPrice());
-			pstmt.setInt(3,car.getShopID().getId());
+			System.out.println(car.getPrice());
+			pstmt.setInt(3, car.getShopID().getId());
+			System.out.println(car.getShopID().getId());
 			pstmt.executeUpdate();
 			System.out.println("insert into cars complit");
 		} catch (SQLException e) {
@@ -141,5 +152,6 @@ public class DBController {
 			System.out.println("bad query");
 		}
 	}
+	
 	
 }

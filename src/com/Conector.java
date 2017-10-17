@@ -4,10 +4,10 @@ import java.sql.*;
 
 public class Conector {
  private static Conector instance;
- static final String DB_URL = "jdbc:mysql://localhost/EMP";
- static final String USER = "Rusel";
+ static final String DB_URL = "jdbc:mysql://localhost:3306/mydb";
+ static final String USER = "root";
  static final String PASSWORD = "root";
- private Connection con;
+ private static Connection con;
  
  private Conector(){
  }
@@ -19,17 +19,17 @@ public class Conector {
 	 return instance;
  }
  
- private void creteConection (){
+ private void createConection (){
 	 
 	 try {
-		Class.forName("com.mesql.jdbc.Driver").newInstance();
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		System.out.println("Connecting to datbase");
 		con = DriverManager.getConnection(DB_URL,USER,PASSWORD);
 	
 	} catch (ClassNotFoundException e) {
 		System.out.println("Where is your class?");
 	} catch (SQLException e) {
-		System.out.println("Cant connect to Database");
+		System.out.println("Couldn't connect to Database");
 	} catch (Exception e) {
 		System.out.println ("Something is wrong!!!");
 	}
@@ -38,13 +38,13 @@ public class Conector {
  
  public Connection getConnection(){
 	 if (con == null){
-		 creteConection();
+		 createConection();
 	 }
 	 
 	 return con;
  }
  
- public void closeConnection(){
+ public static void closeConnection(){
 	 if (con != null){
 		 try {
 			con.close();
