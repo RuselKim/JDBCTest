@@ -8,10 +8,6 @@ public Shops(int id, String name,String adress){
 	setName(name);
 	
 }
-public Shops(String name,String adress){
-	setAdress(adress);
-	setName(name);
-}
 
 	private int id;
 	private String name;

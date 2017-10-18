@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DBController {
-	private Conector con = Conector.getInstance();
+	private MySQLConector con = MySQLConector.getInstance();
 	
 	public ArrayList selectCars(){
 		ArrayList carsList = new ArrayList();

@@ -9,11 +9,6 @@ public class Cars {
 		setShopID(shops_id);
 	}
 	
-	public Cars(String model,int price,Shops shops_id){
-		setModel(model);
-		setPrice(price);
-		setShopID(shops_id);
-	}
 		
 	private int id;
 	private String model;

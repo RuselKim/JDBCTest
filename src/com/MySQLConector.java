@@ -2,19 +2,27 @@ package com;
 
 import java.sql.*;
 
-public class Conector {
- private static Conector instance;
- static final String DB_URL = "jdbc:mysql://localhost:3306/mydb";
- static final String USER = "root";
- static final String PASSWORD = "root";
+import mysql.MySqlCarsDao;
+import mysql.MySqlShopsDao;
+
+import dao.CarsDao;
+import dao.DaoFactory;
+import dao.ShopsDao;
+
+public class MySQLConector implements DaoFactory{
+ private static MySQLConector instance;
+ private final String DB_URL = "jdbc:mysql://localhost:3306/mydb";
+ private final String USER = "root";
+ private final String PASSWORD = "root";
+ private final String DRIVER = "com.mysql.jdbc.Driver";
  private static Connection con;
  
- private Conector(){
+ private MySQLConector(){
  }
  
- public static Conector getInstance(){
+ public static MySQLConector getInstance(){
 	 if (instance == null){
-		 instance = new Conector();
+		 instance = new MySQLConector();
 	 }
 	 return instance;
  }
@@ -22,7 +30,7 @@ public class Conector {
  private void createConection (){
 	 
 	 try {
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Class.forName(DRIVER).newInstance();
 		System.out.println("Connecting to datbase");
 		con = DriverManager.getConnection(DB_URL,USER,PASSWORD);
 	
@@ -54,5 +62,15 @@ public class Conector {
 		}
 	 }
  }
+
+public ShopsDao getShopsDao(Connection connection) {
+	
+	return new MySqlShopsDao(connection);
+}
+
+public CarsDao getCarsDao(Connection connection) {
+	
+	return new MySqlCarsDao(connection);
+}
  
 }
