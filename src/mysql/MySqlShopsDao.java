@@ -35,7 +35,7 @@ public class MySqlShopsDao implements ShopsDao {
 			ResultSet result = selectShops.executeQuery(query);
 	
 			while (result.next()){
-				int id = result.getInt("id_shops");
+				int id = result.getInt("id");
 				String name = result.getString("name");
 				String adress = result.getString("adress");
 				Shops shop = new Shops(id,name,adress);
@@ -106,10 +106,11 @@ public class MySqlShopsDao implements ShopsDao {
 
 	public void deleteShops(int id) {
 		Connection con = connector.getConnection();
-		String query = "Delete from shops where id = " + id + ";";
+		String query = "Delete from shops where id = ?;";
 		try {
-			Statement stmt = con.prepareStatement(query);
-			stmt.executeQuery(query);
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
 			System.out.println("shop is deleted");
 		} catch (SQLException e) {
 			System.out.println("bad delete query");

@@ -1,7 +1,5 @@
 package com;
 
-import java.sql.Connection;
-
 import mysql.MySqlCarsDao;
 import mysql.MySqlShopsDao;
 
@@ -19,13 +17,21 @@ public class Main {
 		
 //		shopsDao.insertShops(avtomag);
 //		shopsDao.insertShops(razvoluhi);
-		//carsDao.insertCars(a8);
-		//carsDao.insertCars(q7);
-		//carsDao.insertCars(x5);
-		carsDao.deleteCars(1);
+//		carsDao.insertCars(a8);
+//		carsDao.insertCars(q7);
+//		carsDao.insertCars(x5);
+//		carsDao.deleteCars(1);
+//		shopsDao.deleteShops(15);
+		Cars car = carsDao.getCar(1);
+		System.out.println(car.getModel());
+//		car.setModel("a88");
+//		carsDao.updateCars(car);
+//		Shops shop = shopsDao.getShop(16);
+//		System.out.println(shop.getAdress());
 		
-		System.out.println(shopsDao.getAllShops().size());
-		System.out.println(carsDao.getAllCars().size());
+		
+//		System.out.println(shopsDao.getAllShops().size());
+//		System.out.println(carsDao.getAllCars().size());
 		
 	
 		

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import com.Cars;
 import com.MySQLConector;
-import com.Shops;
 
 import dao.CarsDao;
 
@@ -50,16 +49,13 @@ public class MySqlCarsDao implements CarsDao {
 			selectCars.setInt(1, id);
 			ResultSet result = selectCars.executeQuery();
 			result.next();
-
-			Shops shop_id = new MySqlShopsDao().getShop(result
-					.getInt("shops_id"));
-
 			car = new Cars(result.getInt("id"), result.getString("model"),
-					result.getInt("price"), shop_id);
+					result.getInt("price"),null);
 
 			selectCars.close();
 		} catch (SQLException e) {
 			System.out.println("Bad select query");
+			e.printStackTrace();
 		}
 		return car;
 	}
@@ -75,7 +71,6 @@ public class MySqlCarsDao implements CarsDao {
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query);
-			
 			pstmt.setString(1, car.getModel());
 			pstmt.setInt(2, car.getPrice());
 			if (car.getShopID() != null) {
@@ -91,13 +86,25 @@ public class MySqlCarsDao implements CarsDao {
 
 	public void updateCars(Cars car) {
 		Connection con = connector.getConnection();
-		String query = "Update cars set model=?, price=?, shops_id=? where id=?;";
+		String query;
+		PreparedStatement pstmt;
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query);
+		if (car.getShopID() != null){
+			query = "Update cars set model=?, price=?, shops_id=? where id=?;";
+			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, car.getModel());
 			pstmt.setInt(2, car.getPrice());
 			pstmt.setInt(3, car.getShopID().getId());
 			pstmt.setInt(4, car.getId());
+				
+		}else{
+			query = "Update cars set model=?, price=? where id=?;";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, car.getModel());
+			pstmt.setInt(2, car.getPrice());
+			pstmt.setInt(3, car.getId());
+		}
+
 			pstmt.executeUpdate();
 			System.out.println("cars is updated");
 		} catch (SQLException e) {
@@ -108,10 +115,11 @@ public class MySqlCarsDao implements CarsDao {
 
 	public void deleteCars(int id) {
 		Connection con = connector.getConnection();
-		String query = "Delete from cars where id = " + id +";";
+		String query = "Delete from cars where id = ?;";
 		try {
-			Statement stmt = con.createStatement();
-			stmt.executeQuery(query);
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setInt(1,id);
+			stmt.executeUpdate();
 			System.out.println("car is deleted");
 		} catch (SQLException e) {
 			System.out.println("bad delete query");
