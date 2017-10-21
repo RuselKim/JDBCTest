@@ -2,14 +2,8 @@ package com;
 
 import java.sql.*;
 
-import mysql.MySqlCarsDao;
-import mysql.MySqlShopsDao;
 
-import dao.CarsDao;
-import dao.DaoFactory;
-import dao.ShopsDao;
-
-public class MySQLConector implements DaoFactory{
+public class MySQLConector {
  private static MySQLConector instance;
  private final String DB_URL = "jdbc:mysql://localhost:3306/mydb";
  private final String USER = "root";
@@ -63,14 +57,4 @@ public class MySQLConector implements DaoFactory{
 	 }
  }
 
-public ShopsDao getShopsDao(Connection connection) {
-	
-	return new MySqlShopsDao(connection);
-}
-
-public CarsDao getCarsDao(Connection connection) {
-	
-	return new MySqlCarsDao(connection);
-}
- 
 }

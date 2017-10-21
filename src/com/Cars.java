@@ -2,6 +2,13 @@ package com;
 
 public class Cars {
 	
+	public Cars(String model,int price,Shops shops_id){
+		
+		setModel(model);
+		setPrice(price);
+		setShopID(shops_id);
+	}
+	
 	public Cars(int id,String model,int price,Shops shops_id){
 		setId(id);
 		setModel(model);

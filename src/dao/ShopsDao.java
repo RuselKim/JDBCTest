@@ -7,7 +7,7 @@ import com.Shops;
 
 public interface ShopsDao {
 
-	public ArrayList getAllShops();
+	public ArrayList<Shops> getAllShops();
 	
 	public Shops getShop(int id);
 	
@@ -15,5 +15,5 @@ public interface ShopsDao {
 	
 	public void updateShops(Shops shop);
 	
-	public void deleteShops(Shops shop);
+	public void deleteShops(int id);
 }

@@ -2,6 +2,12 @@ package com;
 
 public class Shops {
 	
+public Shops( String name,String adress){
+	setAdress(adress);
+	setName(name);
+	
+}
+
 public Shops(int id, String name,String adress){
 	setId(id);
 	setAdress(adress);

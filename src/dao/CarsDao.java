@@ -1,13 +1,13 @@
 package dao;
 
 import java.util.ArrayList;
-import java.util.Map;
+
 
 import com.Cars;
 
 public interface CarsDao {
 
-	public ArrayList getAllCars();
+	public ArrayList<Cars> getAllCars();
 	
 	public Cars getCar(int id);
 	
@@ -15,5 +15,5 @@ public interface CarsDao {
 	
 	public void updateCars(Cars car);
 	
-	public void deleteCars(Cars car);
+	public void deleteCars(int id);
 }
