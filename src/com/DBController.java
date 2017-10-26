@@ -2,15 +2,14 @@ package com;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DBController {
 	private MySQLConector con = MySQLConector.getInstance();
 	
-	public ArrayList selectCars(){
-		ArrayList carsList = new ArrayList();
+	public ArrayList<Cars> selectCars(){
+		ArrayList<Cars> carsList = new ArrayList<Cars>();
 		Connection connection = con.getConnection();
 		Statement selectCars;
 		try {

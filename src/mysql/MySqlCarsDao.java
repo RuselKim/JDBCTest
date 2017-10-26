@@ -16,6 +16,9 @@ public class MySqlCarsDao implements CarsDao {
 
 	MySQLConector connector = MySQLConector.getInstance();
 
+	
+	/** Получаем все строки таблицы shops*/
+
 	public ArrayList<Cars> getAllCars() {
 		Connection con = connector.getConnection();
 		ArrayList<Cars> carsList = new ArrayList<Cars>();
@@ -39,6 +42,9 @@ public class MySqlCarsDao implements CarsDao {
 		return carsList;
 	}
 
+	
+	/** Возвращает конретную строку по id*/
+
 	public Cars getCar(int id) {
 		Cars car = null;
 		Connection con = connector.getConnection();
@@ -59,6 +65,9 @@ public class MySqlCarsDao implements CarsDao {
 		}
 		return car;
 	}
+
+	
+	/** Сохраняет объект в базе в качестве новой записи (вставка)*/
 
 	public void insertCars(Cars car) {
 		Connection con = connector.getConnection();
@@ -83,6 +92,9 @@ public class MySqlCarsDao implements CarsDao {
 		}
 
 	}
+
+	
+	/** Сохраняет изменения объекта в базе*/
 
 	public void updateCars(Cars car) {
 		Connection con = connector.getConnection();
@@ -112,6 +124,9 @@ public class MySqlCarsDao implements CarsDao {
 		}
 
 	}
+
+	
+	/** Удаляет объект из базы по id*/
 
 	public void deleteCars(int id) {
 		Connection con = connector.getConnection();

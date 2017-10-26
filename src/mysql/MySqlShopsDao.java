@@ -72,6 +72,9 @@ public class MySqlShopsDao implements ShopsDao {
 		return shop;
 	}
 
+	
+	/** Сохраняет объект в базе в качестве новой записи (вставка)*/
+	
 	public void insertShops(Shops shop) {
 		Connection con = connector.getConnection();
 		String query = "Insert into shops (name,adress)values(?,?);";
@@ -87,6 +90,9 @@ public class MySqlShopsDao implements ShopsDao {
 		}
 		
 	}
+
+	
+	/** Сохраняет изменения объекта в базе*/
 
 	public void updateShops(Shops shop) {
 		Connection con = connector.getConnection();
@@ -104,6 +110,10 @@ public class MySqlShopsDao implements ShopsDao {
 		
 	}
 
+	
+	
+	/** Удаляет объект из базы по id*/
+	
 	public void deleteShops(int id) {
 		Connection con = connector.getConnection();
 		String query = "Delete from shops where id = ?;";
