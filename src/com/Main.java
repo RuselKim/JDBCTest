@@ -1,38 +1,38 @@
 package com;
 
-import mysql.MySqlCarsDao;
-import mysql.MySqlShopsDao;
+import dao.CarsDao;
+import dao.ShopsDao;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		MySqlCarsDao carsDao = new MySqlCarsDao();
-		MySqlShopsDao shopsDao = new MySqlShopsDao();
+		CarsDao carsDao = new CarsDao();
+		ShopsDao shopsDao = new ShopsDao();
 		Shops avtomag = new Shops("avtomag","Pushkina 2");
 		Shops razvoluhi = new Shops("razvoluhi","Centralnaya 32");
 		Cars a8 = new Cars("audi a8", 12000, avtomag);
 		Cars q7 = new Cars("audi q7", 20000, null);
 		Cars x5 = new Cars("BMW x5", 25000,razvoluhi);
 		
-//		shopsDao.insertShops(avtomag);
-//		shopsDao.insertShops(razvoluhi);
-//		carsDao.insertCars(a8);
-//		carsDao.insertCars(q7);
-//		carsDao.insertCars(x5);
+		shopsDao.insertEntity(avtomag);
+//		shopsDao.insertEntity(razvoluhi);
+//		carsDao.insertEntity(a8);
+//		carsDao.insertEntity(q7);
+//		carsDao.insertEntity(x5);
 //		carsDao.deleteCars(1);
 //		shopsDao.deleteShops(15);
-		Cars car = carsDao.getCar(1);
-		System.out.println(car.getModel());
+//		Cars car = (Cars) carsDao.getEntityById(2);
+//		System.out.println(car.getModel());
 //		car.setModel("a88");
 //		carsDao.updateCars(car);
-//		Shops shop = shopsDao.getShop(16);
+//		Shops shop = (Shops)shopsDao.getEntityById(17);
 //		System.out.println(shop.getAdress());
 		
 		
 //		System.out.println(shopsDao.getAllShops().size());
-//		System.out.println(carsDao.getAllCars().size());
-		
+//		System.out.println(carsDao.getAll().size());
+//		
 	
 		
 //		DBController controller = new DBController();
