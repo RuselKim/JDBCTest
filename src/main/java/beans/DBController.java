@@ -1,4 +1,4 @@
-package com;
+package main.java.beans;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -68,8 +68,8 @@ public class DBController {
 			System.out.println(car.getModel());
 			pstmt.setInt(2,car.getPrice());
 			System.out.println(car.getPrice());
-			pstmt.setInt(3, car.getShopID().getId());
-			System.out.println(car.getShopID().getId());
+			pstmt.setInt(3, car.getShop().getId());
+			System.out.println(car.getShop().getId());
 			pstmt.executeUpdate();
 			System.out.println("insert into cars complit");
 		} catch (SQLException e) {
@@ -102,7 +102,7 @@ public class DBController {
 			PreparedStatement pstmt = connection.prepareStatement(query);
 			pstmt.setString(1,car.getModel());
 			pstmt.setInt(2,car.getPrice());
-			pstmt.setInt(3,car.getShopID().getId());
+			pstmt.setInt(3,car.getShop().getId());
 			pstmt.setInt(4,car.getId());
 			pstmt.executeUpdate();
 			System.out.println("cars is updated");

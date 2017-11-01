@@ -1,6 +1,6 @@
-package com;
+package main.java.beans;
 
-import com.Entity;
+
 
 public class Shops extends Entity {
 

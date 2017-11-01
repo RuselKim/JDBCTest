@@ -1,4 +1,4 @@
-package dao;
+package main.java.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,13 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import com.Entity;
-import com.MySQLConector;
+
+import main.java.beans.Entity;
+import main.java.beans.MySQLConector;
 
 public abstract class AbstractDao {
 	private final MySQLConector connector = MySQLConector.getInstance();
 	private String tName;
-	private String getAllQuery = "Select * from " + tName + ";";
+	private String getAllQuery = "Select * from ";
 
 	protected AbstractDao(String tName) {
 		this.tName = tName;
@@ -24,21 +25,26 @@ public abstract class AbstractDao {
 		return con;
 	}
 
+	private String createGetAllQuery() {
+		return getAllQuery + tName;
+	}
+
 	protected abstract Entity parseEntity(ResultSet rs);
 
 	/** Получаем все строки таблицы */
 
 	public List<Entity> getAll() {
 
-		List<Entity> entities = null;
-		try (PreparedStatement ps = getCon().prepareStatement(getAllQuery)) {
+		List<Entity> entities = new ArrayList<Entity>();
+		try (PreparedStatement ps = getCon().prepareStatement(
+				createGetAllQuery())) {
 			ResultSet rs = ps.executeQuery();
-			entities = new ArrayList<Entity>();
 			while (rs.next()) {
 				entities.add(parseEntity(rs));
 			}
 		} catch (SQLException e) {
 			System.out.println("Bad query");
+			e.printStackTrace();
 		}
 		return entities;
 	}
@@ -59,6 +65,8 @@ public abstract class AbstractDao {
 		return entity;
 	}
 
+	/** Генерирует SELECT выражение с нужным id */
+
 	protected abstract String createSelectQuery(int id);
 
 	/** Сохраняет объект в базе в качестве новой записи (вставка) */
@@ -66,12 +74,15 @@ public abstract class AbstractDao {
 	public void insertEntity(Entity entity) {
 		try (PreparedStatement pstmt = getCon().prepareStatement(
 				createInsertQuery(entity))) {
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Bad insert query");
+			e.printStackTrace();
 		}
 	}
 
+	/** Генерирует INSERT выражение для выбранного объекта */
+	
 	protected abstract String createInsertQuery(Entity entity);
 
 	/** Сохраняет изменения объекта в базе */
@@ -79,25 +90,29 @@ public abstract class AbstractDao {
 	public void updateEntity(Entity entity) {
 		try (PreparedStatement pstmt = getCon().prepareStatement(
 				createUpdateQuery(entity))) {
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Bad update query");
 		}
 	}
 
+	/** Генерирует UPDATE выражение для выбранного объекта */
+	
 	protected abstract String createUpdateQuery(Entity entity);
 
 	/** Удаляет объект из базы по id */
 
 	public void deleteEntity(int id) {
-		try (Statement pstmt = getCon().createStatement(
-				)) {
-			pstmt.executeQuery(createDeleteQuery(id));
+		try (Statement pstmt = getCon().createStatement()) {
+			pstmt.executeUpdate(createDeleteQuery(id));
 		} catch (SQLException e) {
 			System.out.println("Bad delete query");
+			e.printStackTrace();
 		}
 	}
 
+	/** Генерирует DELETE выражение с нужным id */
+	
 	protected abstract String createDeleteQuery(int id);
 
 }

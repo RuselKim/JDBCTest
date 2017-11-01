@@ -1,4 +1,4 @@
-package dao;
+package main.java.interfaces;
 
 import java.sql.Connection;
 
@@ -13,6 +13,5 @@ public interface DaoFactory {
 	
 	
 	public CarsDao getCarsDao(Connection connection);
-	
-	
+
 }

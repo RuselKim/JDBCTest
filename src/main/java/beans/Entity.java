@@ -1,4 +1,4 @@
-package com;
+package main.java.beans;
 
 public abstract class Entity {
 		

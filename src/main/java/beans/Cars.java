@@ -1,27 +1,26 @@
-package com;
+package main.java.beans;
 
-import com.Entity;
 
 public class Cars extends Entity {
 
-	public Cars(String model, int price, Shops shops_id) {
+	public Cars(String model, int price, Shops shops) {
 
 		setModel(model);
 		setPrice(price);
-		setShopID(shops_id);
+		setShop(shops);
 	}
 
-	public Cars(int id, String model, int price, Shops shops_id) {
+	public Cars(int id, String model, int price, Shops shops) {
 		setId(id);
 		setModel(model);
 		setPrice(price);
-		setShopID(shops_id);
+		setShop(shops);
 	}
 
 	private int id;
 	private String model;
 	private int price;
-	private Shops shopID;
+	private Shops shop;
 
 	public int getPrice() {
 		return price;
@@ -31,12 +30,12 @@ public class Cars extends Entity {
 		this.price = price;
 	}
 
-	public Shops getShopID() {
-		return shopID;
+	public Shops getShop() {
+		return shop;
 	}
 
-	public void setShopID(Shops shopID) {
-		this.shopID = shopID;
+	public void setShop(Shops shop) {
+		this.shop = shop;
 	}
 
 	public String getModel() {
