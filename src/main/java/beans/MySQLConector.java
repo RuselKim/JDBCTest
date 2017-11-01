@@ -4,10 +4,11 @@ import java.sql.*;
 
 public class MySQLConector {
 	private static MySQLConector instance;
-	private final String DB_URL = "jdbc:mysql://localhost:3306/mydb?useSSL=false";
-	private final String USER = "root";
-	private final String PASSWORD = "root";
-	private final String DRIVER = "com.mysql.jdbc.Driver";
+	private final PropertiesManger pManager = PropertiesManger.getInstance(); 
+	private final String DB_URL = pManager.getProperties().getProperty("DB_URL");
+	private final String USER = pManager.getProperties().getProperty("USER");
+	private final String PASSWORD = pManager.getProperties().getProperty("PASSWORD");
+	private final String DRIVER = pManager.getProperties().getProperty("DRIVER");
 	private static Connection con;
 
 	private MySQLConector() {
