@@ -1,8 +1,22 @@
 package beans;
 
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-public class Shop extends Entity {
+@Entity
+@Table(name = "shops")
+public class Shop extends AEntity {
+	
+	public Shop() {}
 
 	public Shop(String name, String adress) {
 		setAdress(adress);
@@ -17,9 +31,27 @@ public class Shop extends Entity {
 
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
+	
+	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "adress")
 	private String adress;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "shop", cascade = CascadeType.ALL)
+	private List<Car> cars;
+
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
 
 	public String getAdress() {
 		return adress;

@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import beans.Car;
-import beans.Entity;
+import beans.AEntity;
 
 
 
@@ -15,7 +15,7 @@ public class CarDao extends AbstractDao {
 	}
 
 	@Override
-	protected Entity parseEntity(ResultSet rs) {
+	protected AEntity parseEntity(ResultSet rs) {
 		Car car = null;
 		try {
 			int id = rs.getInt("id");
@@ -34,7 +34,7 @@ public class CarDao extends AbstractDao {
 	}
 
 	@Override
-	protected String createInsertQuery(Entity entity) {
+	protected String createInsertQuery(AEntity entity) {
 		Car car = (Car) entity;
 		String query;
 		if (car.getShop() != null) {
@@ -49,7 +49,7 @@ public class CarDao extends AbstractDao {
 	}
 
 	@Override
-	protected String createUpdateQuery(Entity entity) {
+	protected String createUpdateQuery(AEntity entity) {
 
 		String query;
 		Car car = (Car) entity;

@@ -1,7 +1,22 @@
 package beans;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-public class Car extends Entity {
+@Entity
+@Table(name = "cars")
+public class Car extends AEntity {
+	
+	public Car () {
+	}
 
 	public Car(String model, int price, Shop shops) {
 
@@ -17,9 +32,19 @@ public class Car extends Entity {
 		setShop(shops);
 	}
 
-	private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Integer id;
+	
+	@Column(name = "model")
 	private String model;
-	private int price;
+	
+	@Column(name="price")
+	private Integer price;
+	
+	@ManyToOne
+	@JoinColumn(name="shops_id")
 	private Shop shop;
 
 	public int getPrice() {

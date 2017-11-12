@@ -3,7 +3,7 @@ package dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import beans.Entity;
+import beans.AEntity;
 import beans.Shop;
 
 
@@ -15,7 +15,7 @@ public class ShopDao extends AbstractDao {
 	}
 
 	@Override
-	protected Entity parseEntity(ResultSet rs) {
+	protected AEntity parseEntity(ResultSet rs) {
 		Shop shop = null;
 		try {
 			int id = rs.getInt("id");
@@ -34,7 +34,7 @@ public class ShopDao extends AbstractDao {
 	}
 
 	@Override
-	protected String createInsertQuery(Entity entity) {
+	protected String createInsertQuery(AEntity entity) {
 		Shop shop = (Shop) entity;
 		String q = "Insert into shops (name,adress)values('" + shop.getName()
 				+ "','" + shop.getAdress() + "');";
@@ -43,7 +43,7 @@ public class ShopDao extends AbstractDao {
 	}
 
 	@Override
-	protected String createUpdateQuery(Entity entity) {
+	protected String createUpdateQuery(AEntity entity) {
 		Shop shop = (Shop) entity;
 		return "Update shops set name='" + shop.getName() + "', adress='"
 				+ shop.getAdress() + "' where id=" + shop.getId() + ";";

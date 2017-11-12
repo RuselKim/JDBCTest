@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import utils.DbConector;
-import beans.Entity;
+import beans.AEntity;
 
 
 
@@ -31,13 +31,13 @@ public abstract class AbstractDao {
 		return getAllQuery + tName;
 	}
 
-	protected abstract Entity parseEntity(ResultSet rs);
+	protected abstract AEntity parseEntity(ResultSet rs);
 
 	/** Получаем все строки таблицы */
 
-	public List<Entity> getAll() {
+	public List<AEntity> getAll() {
 
-		List<Entity> entities = new ArrayList<Entity>();
+		List<AEntity> entities = new ArrayList<AEntity>();
 		try (PreparedStatement ps = getCon().prepareStatement(
 				createGetAllQuery())) {
 			ResultSet rs = ps.executeQuery();
@@ -53,8 +53,8 @@ public abstract class AbstractDao {
 
 	/** Возвращает конретную строку по id */
 
-	public Entity getEntityById(int id) {
-		Entity entity = null;
+	public AEntity getEntityById(int id) {
+		AEntity entity = null;
 		try (PreparedStatement selectEntity = getCon().prepareStatement(
 				createSelectQuery(id));) {
 			ResultSet rs = selectEntity.executeQuery();
@@ -73,7 +73,7 @@ public abstract class AbstractDao {
 
 	/** Сохраняет объект в базе в качестве новой записи (вставка) */
 
-	public void insertEntity(Entity entity) {
+	public void insertEntity(AEntity entity) {
 		try (PreparedStatement pstmt = getCon().prepareStatement(
 				createInsertQuery(entity))) {
 			pstmt.executeUpdate();
@@ -85,11 +85,11 @@ public abstract class AbstractDao {
 
 	/** Генерирует INSERT выражение для выбранного объекта */
 	
-	protected abstract String createInsertQuery(Entity entity);
+	protected abstract String createInsertQuery(AEntity entity);
 
 	/** Сохраняет изменения объекта в базе */
 
-	public void updateEntity(Entity entity) {
+	public void updateEntity(AEntity entity) {
 		try (PreparedStatement pstmt = getCon().prepareStatement(
 				createUpdateQuery(entity))) {
 			pstmt.executeUpdate();
@@ -100,7 +100,7 @@ public abstract class AbstractDao {
 
 	/** Генерирует UPDATE выражение для выбранного объекта */
 	
-	protected abstract String createUpdateQuery(Entity entity);
+	protected abstract String createUpdateQuery(AEntity entity);
 
 	/** Удаляет объект из базы по id */
 

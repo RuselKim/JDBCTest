@@ -1,6 +1,6 @@
 package beans;
 
-public abstract class Entity {
+public abstract class AEntity {
 		
 	public abstract int getId();
 
