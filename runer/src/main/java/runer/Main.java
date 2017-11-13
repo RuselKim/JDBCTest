@@ -12,20 +12,25 @@ public class Main {
 
 		CarDao carsDao = new CarDao();
 		ShopDao shopsDao = new ShopDao();
-		// Shop avtomag = new Shop("avtomag","Pushkina 2");
-		 Shop razvoluhi = new Shop("razvoluhi","Centralnaya 32");
-		// Car a8 = new Car("audi a8", 12000, avtomag);
-		// Car q7 = new Car("audi q7", 20000, null);
-		// Car x5 = new Car("BMW x5", 25000,razvoluhi);
+//		 Shop avtomag = new Shop("avtomag","Pushkina 2");
+//		 Shop razvoluhi = new Shop("razvoluhi","Centralnaya 32");
+//		 Car a8 = new Car("audi a8", 12000, avtomag);
+		 Car q7 = new Car("audi q7", 20000, null);
+//		 Car x5 = new Car("BMW x5", 25000,razvoluhi);
 
-		shopsDao.save(razvoluhi);
+//		shopsDao.save(razvoluhi);
+//		shopsDao.deleteById(20);
 		
+//		 carsDao.save(q7);
+		 carsDao.deleteById(3);
+		 
 //		print(carsDao.getById(2));
-//		print(shopsDao.getById(20));
+//		print(shopsDao.getById(21));
 
 //		for (Shop s : shopsDao.getAll()) {
 //			print(s);
 //		}
+		
 //		for (Car s : carsDao.getAll()) {
 //			print(s);
 //		}

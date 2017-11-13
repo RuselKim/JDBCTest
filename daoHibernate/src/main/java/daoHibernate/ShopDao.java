@@ -16,30 +16,42 @@ public class ShopDao {
 	Transaction curentTransaction;
 
 	public List<Shop> getAll() {
-		curentSession = instance.getSessionFactory().openSession();
+		curentSession = instance.getSessionFactory().getCurrentSession();
+		curentTransaction = curentSession.beginTransaction();
 		List<Shop> result = curentSession.createCriteria(Shop.class).list();
+		curentTransaction.commit();
+		
 		return result;
 	}
 
 	public Shop getById(Integer id) {
-		curentSession = instance.getSessionFactory().openSession();
+		curentSession = instance.getSessionFactory().getCurrentSession();
+		curentTransaction = curentSession.beginTransaction();
 		Shop shop = (Shop) curentSession.createCriteria(Shop.class).add(Restrictions.idEq(id)).uniqueResult();
+		curentTransaction.commit();
 
 		return shop;
 	}
 
 	public void deleteById(Integer id) {
-		curentSession = instance.getSessionFactory().openSession();
+		curentSession = instance.getSessionFactory().getCurrentSession();
+		curentTransaction = curentSession.beginTransaction();
 		Shop shop = (Shop) curentSession.createCriteria(Shop.class).add(Restrictions.idEq(id)).uniqueResult();
-		System.out.println(shop.getId());
 		if (shop != null) {
 			curentSession.delete(shop);
+		}else {
+			System.out.println("there is no such shop");
 		}
+		curentTransaction.commit();
+		
 	}
 
 	public void save(Shop shop) {
-		curentSession = instance.getSessionFactory().openSession();
+		
+		curentSession = instance.getSessionFactory().getCurrentSession();
+		curentTransaction = curentSession.beginTransaction();
 		curentSession.saveOrUpdate(shop);
+		curentTransaction.commit();
 	}
 
 }
