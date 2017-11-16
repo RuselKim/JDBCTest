@@ -1,4 +1,4 @@
-package daoHibernate;
+package com.blabla.daoHibernate;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import beans.Car;
+import com.blabla.beans.Car;
 
 public class CarDao {
 

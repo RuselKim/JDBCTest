@@ -1,4 +1,4 @@
-package dao;
+package com.blabla.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.DbConector;
-import beans.AEntity;
+import com.blabla.beans.AEntity;
+import com.blabla.utils.DbConector;
 
 
 

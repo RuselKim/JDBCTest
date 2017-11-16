@@ -15,8 +15,8 @@
         
         <property name="show_sql">true</property>
         
-        <mapping class="beans.Car"/>
-        <mapping class="beans.Shop"/>
+        <mapping class="com.blabla.beans.Car"/>
+        <mapping class="com.blabla.beans.Shop"/>
         
     </session-factory>
 </hibernate-configuration>

@@ -1,10 +1,10 @@
-package runer;
+package com.blabla.runer;
 
-import beans.AEntity;
-import beans.Car;
-import beans.Shop;
-import daoHibernate.CarDao;
-import daoHibernate.ShopDao;
+import com.blabla.beans.AEntity;
+import com.blabla.beans.Car;
+import com.blabla.beans.Shop;
+import com.blabla.daoHibernate.CarDao;
+import com.blabla.daoHibernate.ShopDao;
 
 public class Main {
 

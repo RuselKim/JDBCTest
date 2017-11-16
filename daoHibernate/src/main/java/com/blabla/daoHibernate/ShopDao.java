@@ -1,4 +1,4 @@
-package daoHibernate;
+package com.blabla.daoHibernate;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import beans.Shop;
+import com.blabla.beans.Shop;
 
 public class ShopDao {
 	private static final Logger log = LogManager.getLogger(ShopDao.class);

@@ -1,10 +1,10 @@
-package dao;
+package com.blabla.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import beans.AEntity;
-import beans.Shop;
+import com.blabla.beans.AEntity;
+import com.blabla.beans.Shop;
 
 
 

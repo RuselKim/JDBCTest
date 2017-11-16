@@ -1,4 +1,4 @@
-package beans;
+package com.blabla.beans;
 
 public abstract class AEntity {
 		

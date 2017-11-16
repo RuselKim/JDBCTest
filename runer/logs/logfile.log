@@ -1,1 +1,5 @@
 [INFO ] 2017-11-17 00:18:35.079 [main] CarDao - Vdhistko v pozhondku
+[ERROR] 2017-11-17 00:38:26.044 [main] CarDao - org.hibernate.MappingException: Unable to load class [ beans.Car] declared in Hibernate configuration <mapping/> entry
+[ERROR] 2017-11-17 00:40:45.137 [main] CarDao - org.hibernate.MappingException: Unable to load class [ beans.Car] declared in Hibernate configuration <mapping/> entry
+[ERROR] 2017-11-17 00:43:21.754 [main] CarDao - org.hibernate.MappingException: Unable to load class [ beans.Car] declared in Hibernate configuration <mapping/> entry
+[INFO ] 2017-11-17 00:55:46.482 [main] CarDao - Vdhistko v pozhondku

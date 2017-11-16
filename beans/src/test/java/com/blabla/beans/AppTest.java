@@ -1,4 +1,4 @@
-package org.beans;
+package com.blabla.beans;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
