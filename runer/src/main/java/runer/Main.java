@@ -15,14 +15,14 @@ public class Main {
 //		 Shop avtomag = new Shop("avtomag","Pushkina 2");
 //		 Shop razvoluhi = new Shop("razvoluhi","Centralnaya 32");
 //		 Car a8 = new Car("audi a8", 12000, avtomag);
-		 Car q7 = new Car("audi q7", 20000, null);
+//		 Car q7 = new Car("audi q7", 20000, null);
 //		 Car x5 = new Car("BMW x5", 25000,razvoluhi);
 
 //		shopsDao.save(razvoluhi);
 //		shopsDao.deleteById(20);
 		
 //		 carsDao.save(q7);
-		 carsDao.deleteById(3);
+//		 carsDao.deleteById(3);
 		 
 //		print(carsDao.getById(2));
 //		print(shopsDao.getById(21));
@@ -37,6 +37,8 @@ public class Main {
 		
 //		shopsDao.deleteById(20);
 
+		Car vbn = carsDao.getById(2);
+		print(vbn.getShop());
 	}
 	
 	public static void print (AEntity entity) {

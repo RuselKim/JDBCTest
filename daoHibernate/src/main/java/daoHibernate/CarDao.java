@@ -2,6 +2,8 @@ package daoHibernate;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -11,43 +13,67 @@ import beans.Car;
 public class CarDao {
 
 	HibernateUtils instance = HibernateUtils.getInstance();
-	Session curentSession;
-	Transaction curentTransaction;
+	private static final Logger log = LogManager.getLogger(CarDao.class);
 
 	public List<Car> getAll() {
-		curentSession = instance.getSessionFactory().getCurrentSession();
-		curentTransaction = curentSession.beginTransaction();
-		List<Car> result = curentSession.createCriteria(Car.class).list();
-		curentTransaction.commit();
-		
+		List<Car> result = null;
+		try {
+			Session curentSession = instance.getSessionFactory().getCurrentSession();
+			Transaction curentTransaction = curentSession.beginTransaction();
+			result = curentSession.createCriteria(Car.class).list();
+			curentTransaction.commit();
+			log.info("Vdhistko v pozhondku");
+		} catch (Exception e) {
+			log.error(e);
+		}
 		return result;
+
 	}
 
 	public Car getById(Integer id) {
-		curentSession = instance.getSessionFactory().getCurrentSession();
-		curentTransaction = curentSession.beginTransaction();
-		Car car = (Car) curentSession.createCriteria(Car.class).add(Restrictions.idEq(id)).uniqueResult();
-		curentTransaction.commit();
-		
+		Car car = null;
+		try {
+			Session curentSession = instance.getSessionFactory().getCurrentSession();
+			Transaction curentTransaction = curentSession.beginTransaction();
+			List<Car> list = curentSession.createCriteria(Car.class).add(Restrictions.idEq(id)).list();
+			curentTransaction.commit();
+			car = list.get(0);
+			log.info("Vdhistko v pozhondku");
+		} catch (Exception e) {
+			log.error(e);
+		}
+
 		return car;
 	}
 
 	public void deleteById(Integer id) {
-		curentSession = instance.getSessionFactory().getCurrentSession();
-		curentTransaction = curentSession.beginTransaction();
-		Car car = (Car) curentSession.createCriteria(Car.class).add(Restrictions.idEq(id)).uniqueResult();
+		try {
+			Session curentSession = instance.getSessionFactory().getCurrentSession();
+			Transaction curentTransaction = curentSession.beginTransaction();
+			Car car = (Car) curentSession.createCriteria(Car.class).add(Restrictions.idEq(id)).uniqueResult();
 
-		if (car != null) {
-			curentSession.delete(car);
+			if (car != null) {
+				curentSession.delete(car);
+				log.info("Deleted");
+			} else {
+				log.info("No such entity");
+			}
+
+			curentTransaction.commit();
+		} catch (Exception e) {
+			log.error(e);
 		}
-		
-		curentTransaction.commit();
 	}
 
 	public void save(Car car) {
-		curentSession = instance.getSessionFactory().getCurrentSession();
-		curentTransaction = curentSession.beginTransaction();
-		curentSession.saveOrUpdate(car);
-		curentTransaction.commit();
+		try {
+			Session curentSession = instance.getSessionFactory().getCurrentSession();
+			Transaction curentTransaction = curentSession.beginTransaction();
+			curentSession.saveOrUpdate(car);
+			curentTransaction.commit();
+			log.info("Saved");
+		} catch (Exception e) {
+			log.error(e);
+		}
 	}
 }

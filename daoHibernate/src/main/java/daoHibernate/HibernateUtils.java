@@ -9,7 +9,7 @@ public class HibernateUtils {
 	private static HibernateUtils instance;
 	private SessionFactory sessionFactory;
 	
-	public HibernateUtils() {
+	private HibernateUtils() {
 	}
 	
 	public static HibernateUtils getInstance() {
