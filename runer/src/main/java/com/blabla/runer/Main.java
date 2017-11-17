@@ -25,7 +25,7 @@ public class Main {
 //		 carsDao.deleteById(3);
 		 
 //		print(carsDao.getById(2));
-//		print(shopsDao.getById(21));
+		print(shopsDao.getById(21));
 
 //		for (Shop s : shopsDao.getAll()) {
 //			print(s);
@@ -37,8 +37,11 @@ public class Main {
 		
 //		shopsDao.deleteById(20);
 
-		Car vbn = carsDao.getById(2);
-		print(vbn.getShop());
+//		Car vbn = carsDao.getById(2);
+//		print(vbn);
+		
+//		Shop sh = shopsDao.getById(21);
+//		System.out.println(sh.getCars().size());
 	}
 	
 	public static void print (AEntity entity) {
@@ -48,7 +51,7 @@ public class Main {
 			System.out.println("id = " + car.getId());
 			System.out.println("model = " + car.getModel());
 			System.out.println("price = " + car.getPrice());
-			System.out.println("shop = " + car.getShop().getName());
+			System.out.println("shop = " + car.getShop().toString());
 			System.out.println(".................");
 		}else if (c.getSimpleName().toString().equals("Shop")) {
 			Shop shop = (Shop) entity;

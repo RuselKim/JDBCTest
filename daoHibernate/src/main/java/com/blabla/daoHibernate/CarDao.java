@@ -45,6 +45,22 @@ public class CarDao {
 
 		return car;
 	}
+	
+	public Car getByIdWithShop(Integer id) {
+		Car car = null;
+		try {
+			Session curentSession = instance.getSessionFactory().getCurrentSession();
+			Transaction curentTransaction = curentSession.beginTransaction();
+			List<Car> list = curentSession.createCriteria(Car.class).createAlias("shop", "id").add(Restrictions.idEq(id)).list();
+			curentTransaction.commit();
+			car = list.get(0);
+			log.info("Vdhistko v pozhondku");
+		} catch (Exception e) {
+			log.error(e);
+		}
+
+		return car;
+	}
 
 	public void deleteById(Integer id) {
 		try {

@@ -2,6 +2,7 @@ package com.blabla.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,8 +13,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "cars")
 public class Car extends AEntity {
-	
-	public Car () {
+
+	public Car() {
 	}
 
 	public Car(String model, int price, Shop shops) {
@@ -34,15 +35,15 @@ public class Car extends AEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
+
 	@Column(name = "model")
 	private String model;
-	
-	@Column(name="price")
+
+	@Column(name = "price")
 	private Integer price;
-	
-	@ManyToOne
-	@JoinColumn(name="shops_id")
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "shops_id")
 	private Shop shop;
 
 	public int getPrice() {
