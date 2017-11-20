@@ -23,3 +23,41 @@
 [INFO ] 2017-11-17 03:14:48.067 [main] ShopDao - Vdhistko v pozhondku
 [INFO ] 2017-11-17 03:30:16.380 [main] ShopDao - Vdhistko v pozhondku
 [INFO ] 2017-11-17 03:31:57.077 [main] ShopDao - Vdhistko v pozhondku
+[ERROR] 2017-11-19 19:41:49.887 [main] ShopDao - org.hibernate.AnnotationException: Associations marked as mappedBy must not define database mappings like @JoinTable or @JoinColumn: com.blabla.beans.Shop.cars
+[INFO ] 2017-11-19 19:45:05.012 [main] ShopDao - Vdhistko v pozhondku
+[INFO ] 2017-11-19 19:46:39.936 [main] ShopDao - Vdhistko v pozhondku
+[INFO ] 2017-11-19 20:01:27.449 [main] CarDao - Vdhistko v pozhondku
+[INFO ] 2017-11-19 20:04:18.882 [main] ShopDao - Vdhistko v pozhondku
+[ERROR] 2017-11-19 20:04:55.112 [main] ShopDao - org.hibernate.AnnotationException: Associations marked as mappedBy must not define database mappings like @JoinTable or @JoinColumn: com.blabla.beans.Shop.cars
+[INFO ] 2017-11-19 20:05:42.291 [main] ShopDao - Vdhistko v pozhondku
+[ERROR] 2017-11-19 20:21:11.924 [main] ShopDao - org.hibernate.QueryException: could not resolve property: shop of: com.blabla.beans.Shop
+[ERROR] 2017-11-19 20:21:58.674 [main] ShopDao - org.hibernate.QueryException: could not resolve property: shop of: com.blabla.beans.Shop
+[INFO ] 2017-11-19 20:22:54.153 [main] ShopDao - Vdhistko v pozhondku
+[INFO ] 2017-11-19 20:25:12.293 [main] ShopDao - Vdhistko v pozhondku
+[INFO ] 2017-11-19 20:27:18.396 [main] ShopDao - Vdhistko v pozhondku
+[INFO ] 2017-11-19 20:29:53.783 [main] CarDao - Vdhistko v pozhondku
+[INFO ] 2017-11-19 20:34:46.911 [main] CarDao - Vdhistko v pozhondku
+[INFO ] 2017-11-19 21:50:52.734 [main] CarDao - Vdhistko v pozhondku
+[ERROR] 2017-11-19 21:53:28.616 [main] AbstractDao - java.lang.NullPointerException
+[ERROR] 2017-11-19 21:55:22.305 [main] AbstractDao - java.lang.NullPointerException
+[ERROR] 2017-11-19 21:57:25.941 [main] AbstractDao - java.lang.NullPointerException
+[ERROR] 2017-11-19 22:04:40.750 [main] AbstractDao - java.lang.NullPointerException
+[ERROR] 2017-11-19 22:06:35.205 [main] AbstractDao - java.lang.NullPointerException
+[INFO ] 2017-11-19 22:12:07.801 [main] ShopDao - Vdhistko v pozhondku
+[INFO ] 2017-11-19 22:13:03.002 [main] CarDao - Vdhistko v pozhondku
+[INFO ] 2017-11-20 02:27:56.739 [main] AbstractDao - SUCCESS
+[INFO ] 2017-11-20 02:30:01.209 [main] AbstractDao - SUCCESS
+[INFO ] 2017-11-20 02:31:13.664 [main] AbstractDao - SUCCESS
+[INFO ] 2017-11-20 02:32:09.039 [main] AbstractDao - SUCCESS
+[INFO ] 2017-11-20 02:38:06.574 [main] AbstractDao - Vdhistko v pozhondku
+[INFO ] 2017-11-20 02:38:25.673 [main] AbstractDao - Vdhistko v pozhondku
+[ERROR] 2017-11-20 02:39:14.423 [main] AbstractDao - org.hibernate.QueryException: could not resolve property: shop of: com.blabla.beans.Shop
+[ERROR] 2017-11-20 02:39:50.617 [main] AbstractDao - org.hibernate.QueryException: could not resolve property: shop of: com.blabla.beans.Shop
+[ERROR] 2017-11-20 02:52:39.136 [main] AbstractDao - java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+[INFO ] 2017-11-20 02:56:49.347 [main] AbstractDao - Vdhistko v pozhondku
+[INFO ] 2017-11-20 02:58:06.683 [main] AbstractDao - Vdhistko v pozhondku
+[ERROR] 2017-11-20 03:03:46.935 [main] AbstractDao - org.hibernate.AnnotationException: Associations marked as mappedBy must not define database mappings like @JoinTable or @JoinColumn: com.blabla.beans.Shop.cars
+[ERROR] 2017-11-20 03:05:14.149 [main] AbstractDao - org.hibernate.AnnotationException: Associations marked as mappedBy must not define database mappings like @JoinTable or @JoinColumn: com.blabla.beans.Shop.cars
+[ERROR] 2017-11-20 03:10:56.733 [main] AbstractDao - org.hibernate.QueryException: could not resolve property: cars of: com.blabla.beans.Car
+[ERROR] 2017-11-20 03:11:29.482 [main] AbstractDao - org.hibernate.QueryException: could not resolve property: shops of: com.blabla.beans.Car
+[INFO ] 2017-11-20 03:11:50.684 [main] AbstractDao - Vdhistko v pozhondku
